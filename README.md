@@ -31,7 +31,7 @@ The design will include a search bar for books, a results section displaying boo
    - Research and select appropriate APIs for book search and quote generation.
    - Set up API requests to fetch data for book search and quote generation.
 2. **Frontend Development:**
-   - Design the layout using Bulma, ensuring a responsive and clean interface.
+   - Design the layout using tailwind, ensuring a responsive and clean interface.
    - Implement the search functionality, displaying results dynamically.
    - Implement the quote generation feature, displaying a new quote on request.
 3. **Backend Development:**
