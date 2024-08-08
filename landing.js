@@ -1,5 +1,5 @@
 //code for the landing page and quote picker
-
+// API keys
 let BookApi = 'AIzaSyAF346xBtlIrylYJvEP8dIP_L4581GQkOY'
 let quoteApi = 'ZdLWT6DldrWkI5DPZO9Dbw==XN3uwMFhiiv2ZNHy'
 let quoteGenerator = 'https://api.api-ninjas.com/v1/quotes?category='
