@@ -17,10 +17,11 @@ document.addEventListener("submit", function (event) {
   fetch(`${bookSearch}${searchInput.value}&key=${BookApi}`)
     .then((response) => response.json())
     .then((data) => {
-      //getting saved books from local storage
+        //getting saved books from local storage
       const savedBooks = localStorage.getItem("savedBooks");
       //parsing to make an array
       const savedBooksArray = JSON.parse(savedBooks) || [];
+
       for (const item of data.items) {
         const book = {};
         book.title = item.volumeInfo.title;
@@ -37,10 +38,11 @@ document.addEventListener("submit", function (event) {
         //adds a new book to the array of saved books
         savedBooksArray.push(book);
       }
+      
       console.log(savedBooksArray);
       // saves the books array to the local storage
       localStorage.setItem("savedBooks", JSON.stringify(savedBooksArray));
-      //window.location.href = "index.html";
+      window.location.href = "results.html";
     });
 });
 
