@@ -4,7 +4,7 @@ let BookApi = 'AIzaSyAF346xBtlIrylYJvEP8dIP_L4581GQkOY'
 let quoteApi = 'ZdLWT6DldrWkI5DPZO9Dbw==XN3uwMFhiiv2ZNHy'
 let quoteGenerator = 'https://api.api-ninjas.com/v1/quotes?category='
 let bookSearch = 'https://www.googleapis.com/books/v1/volumes?q=intitle:'
-let searchButton = document.getElementById('searchInput') 
+let searchInput = document.getElementById('searchInput') 
 let dropDownMenuButton = document.getElementById('dropdownDefaultButton')
 let dropDownMenu = document.getElementById('dropdown')
 let quoteCategories = document.querySelectorAll('a')
@@ -15,7 +15,7 @@ document.addEventListener('submit', function(event){
     //gets api information about the book searched
     //can add dropdown menu to search the parameter after the q= to search by author, title, etc
     event.preventDefault()
-    fetch(`${bookSearch}${searchButton.value}&key=${BookApi}`)
+    fetch(`${bookSearch}${searchInput.value}&key=${BookApi}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
