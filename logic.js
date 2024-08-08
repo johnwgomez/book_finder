@@ -6,6 +6,8 @@ const savedBooksArray = JSON.parse(savedBooks) || [];
 
 const resultsDiv = document.getElementById("results");
 
+const clearButton = document.getElementById("clear");
+
 
 for (const book of savedBooksArray) {
     //created the save button for the books
@@ -104,8 +106,23 @@ for (const book of savedBooksArray) {
     bookList.appendChild(bookItem);
     //appends the bookList to the results div
     resultsDiv.appendChild(bookList);
-
     
-
-
 }
+//added a if statement to clear the localstorage and by doing so clearing the page and we can do this by adding a button that says "Clear Search Results"
+
+clearButton.addEventListener('click', function(event){
+    event.preventDefault()
+    localStorage.removeItem("savedBooks");
+    location.reload();
+    const noBooks = document.createElement('p')
+    noBooks.className='font-serif text-xl antialiased text-gray-400/0'
+    noBooks.textContent='Oops! Search for a Book'
+    resultsDiv.appendChild(noBooks)
+    
+})
+    
+   
+
+//Todo: add function to the save button so we can save books into another array 
+
+//Todo: 

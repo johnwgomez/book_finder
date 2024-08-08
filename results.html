@@ -9,8 +9,32 @@
 <body>
     <!--Div for the search bar-->
     <div class="container mx-auto">
-      <div>Search Bar</div>
-
+      <div class="relative p-12 w-full sm:max-w-2xl sm:mx-auto">
+        <div class="overflow-hidden rounded-full relative p-3">
+          <form
+            role="form"
+            class="relative flex z-50 bg-white rounded-full border"
+            id="searchForm"
+          >
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search for a book"
+              class="rounded-full flex-1 px-6 py-4 text-gray-700"
+            />
+            <button
+              class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <div>
+        <button id="clear" class="flex mx-5 bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">
+          Clear Search
+        </button>
+        </div.
+      </div>
     </div>
 
     <!--Div for the search results-->
