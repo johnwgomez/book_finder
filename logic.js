@@ -141,4 +141,6 @@ clearButton.addEventListener('click', function(event){
 
 //Todo: add function to the save button so we can save books into another array 
 
+
 //Todo: add the function of the api for the search again 
+
