@@ -115,8 +115,8 @@ for (const book of savedBooksArray) {
     saveButton.addEventListener('click', function(event){
         event.preventDefault();
         console.log(savedBooksArray)
-        console.log(event.target)
-        
+        const savedBook = savedBooksArray.find(book => book.title ===title.textContent)
+        console.log(savedBook)
     })
 
     
