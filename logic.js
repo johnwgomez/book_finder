@@ -47,7 +47,7 @@ document.addEventListener("submit", function (event) {
         console.log(savedBooksArray);
         // saves the books array to the local storage
         localStorage.setItem("savedBooks", JSON.stringify(savedBooksArray));
-        window.location.href = "results.html";
+        
       });
 
   });
@@ -198,7 +198,7 @@ clearButton.addEventListener('click', function(event){
 
 favoritePage.addEventListener('click', function(event){
     event.preventDefault();
-    window.location.replace('favorites.html')
+    window.location.href = 'favorites.html'
 })
 
 
