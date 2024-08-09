@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Book Finder Results</title>
+    <title>Books & Quotes</title>
   </head>
   <body>
+    <!--Div for the search bar-->
     <div class="relative isolate px-6 pt-14 lg:px-8">
       <div
         class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -38,28 +39,32 @@
       </div>
       <div class="text-center p-12">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          Book Search Results
+          Welcome to Book Finder!
         </h1>
 
-        <div class="flex justify-center mt-8">
-          <div class="relative w-full sm:max-w-2xl sm:mx-auto">
+        <div class="flex-col justify-center">
+          <div class="relative p-12 w-full sm:max-w-2xl sm:mx-auto">
             <div class="overflow-hidden rounded-full relative p-3">
-              <div
+              <form
+                role="form"
                 class="relative flex z-50 bg-white rounded-full border"
-                id="searchForm"
-              >
+                id="searchForm">
                 <input
                   type="search"
                   id="searchInput"
-                  placeholder="Search again"
-                  class="rounded-full flex-1 px-6 py-4 text-gray-700"
-                />
+                  placeholder="Search for a book"
+                  class="rounded-full flex-1 px-6 py-4 text-gray-700" />
                 <button
-                  class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
-                >
+                  class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">
                   Search
                 </button>
-              </div>
+              </form>
+            </div>
+            <div>
+              <button id="clear"
+                class="flex mx-5 bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">
+                Clear Search
+              </button>
             </div>
           </div>
         </div>
