@@ -79,6 +79,8 @@ quoteCategories.forEach((category) => {
         quoteDiv.appendChild(authorEl);
       });
 
+      
+
     dropDownMenu.className = "hidden";
   });
 });
