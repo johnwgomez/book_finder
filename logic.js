@@ -47,7 +47,7 @@ document.addEventListener("submit", function (event) {
         console.log(savedBooksArray);
         // saves the books array to the local storage
         localStorage.setItem("savedBooks", JSON.stringify(savedBooksArray));
-        
+        window.location.href = "results.html";
       });
 
   });
@@ -181,7 +181,7 @@ for (const book of savedBooksArray) {
     
     
 }
-
+//check if array is not empty and if not delete the savedBooks which are the search results
 if(savedBooksArray){
     localStorage.removeItem('savedBooks');
 }
