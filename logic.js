@@ -8,10 +8,13 @@ const resultsDiv = document.getElementById("results");
 
 const clearButton = document.getElementById("clear");
 
+const favoriteButton = document.getElementById('save')
+
 
 for (const book of savedBooksArray) {
     //created the save button for the books
     const saveButton = document.createElement("button");
+    saveButton.id = 'save';
     saveButton.className = "rounded px-4 py-2 bg-indigo-900 text-white font-bold"
     saveButton.textContent = "Save Book"
     // created a button div to move the button on the list element
@@ -106,23 +109,36 @@ for (const book of savedBooksArray) {
     bookList.appendChild(bookItem);
     //appends the bookList to the results div
     resultsDiv.appendChild(bookList);
+
+
+    
+    saveButton.addEventListener('click', function(event){
+        event.preventDefault();
+        console.log(savedBooksArray)
+        console.log(event.target)
+        
+    })
+
+    
+    
     
 }
-//added a if statement to clear the localstorage and by doing so clearing the page and we can do this by adding a button that says "Clear Search Results"
+//added an eventlistener to clear the localstorage and by doing so clearing the page
 
 clearButton.addEventListener('click', function(event){
     event.preventDefault()
-    localStorage.removeItem("savedBooks");
-    location.reload();
-    const noBooks = document.createElement('p')
-    noBooks.className='font-serif text-xl antialiased text-gray-400/0'
-    noBooks.textContent='Oops! Search for a Book'
-    resultsDiv.appendChild(noBooks)
-    
+    resultsDiv.innerHTML='';
 })
+
+
+
+
+
+
+
     
    
 
 //Todo: add function to the save button so we can save books into another array 
 
-//Todo: 
+//Todo: add the function of the api for the search again 
