@@ -13,13 +13,14 @@ const quoteDiv = document.getElementById("quote");
 const indexPage = document.getElementById('indexPage');
 const submitKey = document.getElementById('submitKey');
 
-const hideModal = sessionStorage.getItem('bookApi');
+const hideModal = localStorage.getItem('bookApi');
 
 const favoritesButton = document.getElementById('favoritesButton');
 
 favoritesButton.addEventListener('click', function(){
-  window.location.href = 'favorites.html'
+  window.location.href = "favorites.html"
 })
+
 
 setTimeout(function(){
   modalForm.className = 'visible'
@@ -39,7 +40,7 @@ submitKey.addEventListener('click', function(){
 
 
   }else {
-  sessionStorage.setItem('bookApi', BookApi.value)
+  localStorage.setItem('bookApi', BookApi.value)
   modalForm.className='hidden'
   }
 
