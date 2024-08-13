@@ -14,7 +14,7 @@ const favoriteButton = document.getElementById('save')
 
 const favoritePage = document.getElementById('favorites')
 
-const bookApiValue = sessionStorage.getItem('bookApi')
+const bookApiValue = localStorage.getItem('bookApi')
 
 const bookApi = 'api';
 
