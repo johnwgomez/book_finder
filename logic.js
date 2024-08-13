@@ -1,7 +1,4 @@
 //code for the index page to show results
-const BookApi = "AIzaSyAF346xBtlIrylYJvEP8dIP_L4581GQkOY";
-const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
-const searchInput = document.getElementById("searchInput");
 
 const savedBooks = localStorage.getItem("savedBooks");
 
@@ -13,48 +10,8 @@ const clearButton = document.getElementById("clear");
 
 const favoriteButton = document.getElementById('save')
 
-const favoritePage = document.getElementById('favorites')
-
-document.addEventListener("submit", function (event) {
-    //gets api information about the book searched
-    //can add dropdown menu to search the parameter after the q= to search by author, title, etc
-    event.preventDefault();
-    fetch(`${bookSearch}${searchInput.value}&key=${BookApi}`)
-      .then((response) => response.json())
-      .then((data) => {
-          //getting saved books from local storage
-        const savedBooks = localStorage.getItem("savedBooks");
-        //parsing to make an array
-        const savedBooksArray = JSON.parse(savedBooks) || [];
-  
-        for (const item of data.items) {
-          const book = {};
-          book.title = item.volumeInfo.title;
-          book.author = item.volumeInfo.authors[0];
-          book.description = item.volumeInfo.description;
-          book.image = item.volumeInfo.imageLinks.thumbnail;
-          book.link = item.volumeInfo.previewLink;
-          book.pageCount = item.volumeInfo.pageCount;
-          book.publishedDate = item.volumeInfo.publishedDate;
-          book.publisher = item.volumeInfo.publisher;
-          book.rating = item.volumeInfo.averageRating;
-          book.categories = item.volumeInfo.categories;
-          book.isbn = item.volumeInfo.industryIdentifiers[0].identifier;
-          //adds a new book to the array of saved books
-          savedBooksArray.push(book);
-        }
-        
-        console.log(savedBooksArray);
-        // saves the books array to the local storage
-        localStorage.setItem("savedBooks", JSON.stringify(savedBooksArray));
-        window.location.href = "results.html";
-      });
-
-  });
-  
 
 for (const book of savedBooksArray) {
-    
     //created the save button for the books
     const saveButton = document.createElement("button");
     saveButton.id = 'save';
@@ -155,50 +112,22 @@ for (const book of savedBooksArray) {
 
 
     
-    
-
     saveButton.addEventListener('click', function(event){
-        const favoriteBooks = localStorage.getItem('favoriteBooks');
-        const favoriteBooksArray = JSON.parse(favoriteBooks) || [];
         event.preventDefault();
-        
+        console.log(savedBooksArray)
         const savedBook = savedBooksArray.find(book => book.title ===title.textContent)
-        const duplicates = favoriteBooksArray.find(book => book.title.trim().toLowerCase() === title.textContent.trim().toLowerCase())
-        
-
-        if(!duplicates){
-            favoriteBooksArray.push(savedBook)
-        }
-        
-
-        console.log(favoriteBooksArray)
-        localStorage.setItem('favoriteBooks',JSON.stringify(favoriteBooksArray))
-
+        console.log(savedBook)
     })
 
-
     
     
     
-}
-//check if array is not empty and if not delete the savedBooks which are the search results
-if(savedBooksArray){
-    localStorage.removeItem('savedBooks');
 }
 //added an eventlistener to clear the localstorage and by doing so clearing the page
 
 clearButton.addEventListener('click', function(event){
     event.preventDefault()
-    resultsDiv.innerHTML = ''
-    
-})
-
-
-//event listener to redirect to Favorite Books page
-
-favoritePage.addEventListener('click', function(event){
-    event.preventDefault();
-    window.location.href = 'favorites.html'
+    resultsDiv.innerHTML='';
 })
 
 
@@ -206,11 +135,12 @@ favoritePage.addEventListener('click', function(event){
 
 
 
+
     
+   
+
+//Todo: add function to the save button so we can save books into another array 
 
 
 //Todo: add the function of the api for the search again 
-
-//Todo: add a function that whenever a search is performed again to delete localStorage and replace it with another localStorage
-
 

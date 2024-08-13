@@ -1,8 +1,7 @@
 //code for the landing page and quote picker
 
-const modalForm = document.getElementById('modelConfirm');
-const BookApi = document.getElementById('bookApi')
-const quoteApi = document.getElementById('quoteApi')
+const BookApi = "AIzaSyAF346xBtlIrylYJvEP8dIP_L4581GQkOY";
+const quoteApi = "ZdLWT6DldrWkI5DPZO9Dbw==XN3uwMFhiiv2ZNHy";
 const quoteGenerator = "https://api.api-ninjas.com/v1/quotes?category=";
 const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
 const searchInput = document.getElementById("searchInput");
@@ -10,38 +9,12 @@ const dropDownMenuButton = document.getElementById("dropdownDefaultButton");
 const dropDownMenu = document.getElementById("dropdown");
 const quoteCategories = document.querySelectorAll("a");
 const quoteDiv = document.getElementById("quote");
-const indexPage = document.getElementById('indexPage');
-const originalIndex = document.getElementById('indexPage').innerHTML;
-const submitKey = document.getElementById('submitKey');
-
-setTimeout(function(){
-  modalForm.className = 'visible'
-  if(modalForm.className = 'visible'){
-    modalForm.className ='absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
-  }
-
-}, 100)
-
-submitKey.addEventListener('click', function(){
-  if(BookApi.value === '' && quoteApi.value === ''){
-    alert("Please Enter the Api Keys to proceed!")
-    modalForm.className = 'absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
-  }else {
-  
-  modalForm.className='hidden'
-  }
-  
-
-})
-
-
-
 
 document.addEventListener("submit", function (event) {
   //gets api information about the book searched
   //can add dropdown menu to search the parameter after the q= to search by author, title, etc
   event.preventDefault();
-  fetch(`${bookSearch}${searchInput.value}&key=${BookApi.value}`)
+  fetch(`${bookSearch}${searchInput.value}&key=${BookApi}`)
     .then((response) => response.json())
     .then((data) => {
         //getting saved books from local storage
@@ -73,8 +46,6 @@ document.addEventListener("submit", function (event) {
     });
 });
 
-
-
 dropDownMenuButton.addEventListener("click", function () {
   if (dropDownMenu.className === "visible") {
     dropDownMenu.className = "hidden";
@@ -90,7 +61,7 @@ quoteCategories.forEach((category) => {
     fetch(fullURL, {
       method: "GET",
       headers: {
-        "X-Api-Key": quoteApi.value,
+        "X-Api-Key": quoteApi,
         "Content-Type": "application/json",
       },
     })
@@ -108,10 +79,6 @@ quoteCategories.forEach((category) => {
         quoteDiv.appendChild(authorEl);
       });
 
-      
-
     dropDownMenu.className = "hidden";
   });
 });
-
-

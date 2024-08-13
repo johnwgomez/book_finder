@@ -7,33 +7,6 @@
     <title>Book Finder</title>
   </head>
   <body>
-    
-      <div id="modelConfirm"  class="absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin">
-        <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
-            <div class="p-6 pt-0 text-center">
-                <svg class="w-20 h-20 text-red-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">Enter API Keys</h3>
-                <div class="mb-6">
-                <label class="mx-2 block">Book API</label>
-                <input type="text" class="block w-full  text-sm p-2.5 text-gray-900 border border-gray-300 rounded" id="bookApi" placeholder="API Key"></input>
-              </div>
-              <div class=" mb-6 ">
-                <label class="mx-2 block">Quote API</label>
-                <input type="text" id="quoteApi" class='block w-full p-2.5 text-gray-900 border border-gray-300 rounded text-sm'placeholder="API Key"></input>
-              </div>
-                
-                <button id="submitKey"
-                    class="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
-                    Enter Keys
-              </button>
-            </div>
-        </div>
-      </div>
-    
     <div class="relative isolate px-6 pt-14 lg:px-8">
       <div
         class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -62,14 +35,11 @@
             );
           "
         ></div>
-        
       </div>
-  
-      <div class="text-center p-12" id="indexPage">
+      <div class="text-center p-12">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
           Welcome to Book Finder!
         </h1>
-        
 
         <div class="flex-col justify-center">
           <div class="relative p-12 w-full sm:max-w-2xl sm:mx-auto">
@@ -211,7 +181,6 @@
         ></div>
       </div>
     </div>
-
     <script src="landing.js"></script>
   </body>
 </html>
