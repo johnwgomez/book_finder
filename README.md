@@ -1,5 +1,5 @@
 # Book Finder and Quote Generator Web App
-https://github.com/johnwgomez/book_finder/settings/pages
+[https://github.com/johnwgomez/book_finder/settings/pages](https://johnwgomez.github.io/book_finder/)
 ## Team #
 **Members:** Gustavo, Steven, John, Antonio
 
