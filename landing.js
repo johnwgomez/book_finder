@@ -19,12 +19,17 @@ setTimeout(function(){
   if(modalForm.className = 'visible'){
     modalForm.className ='absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
   }
+
 }, 100)
 
 submitKey.addEventListener('click', function(){
+  if(BookApi.value === '' && quoteApi.value === ''){
+    alert("Please Enter the Api Keys to proceed!")
+    modalForm.className = 'absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
+  }else {
   
   modalForm.className='hidden'
-  
+  }
   
 
 })
