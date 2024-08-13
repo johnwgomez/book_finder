@@ -1,5 +1,5 @@
 //code for the index page to show results
-const BookApi = "AIzaSyAF346xBtlIrylYJvEP8dIP_L4581GQkOY";
+
 const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
 const searchInput = document.getElementById("searchInput");
 
@@ -19,7 +19,7 @@ document.addEventListener("submit", function (event) {
     //gets api information about the book searched
     //can add dropdown menu to search the parameter after the q= to search by author, title, etc
     event.preventDefault();
-    fetch(`${bookSearch}${searchInput.value}&key=${BookApi}`)
+    fetch(`${bookSearch}${searchInput.value}&key=${BookApi.value}`)
       .then((response) => response.json())
       .then((data) => {
           //getting saved books from local storage
