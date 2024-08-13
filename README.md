@@ -1,7 +1,7 @@
 # Book Finder and Quote Generator Web App
 
 ## Team #
-**Members:** Alanna, Steven, John, Antonio
+**Members:** Gustavo, Steven, John, Antonio
 
 ## Project Title:
 **Book Finder and Quote Generator Web App**
