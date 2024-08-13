@@ -7,7 +7,7 @@
     <title>Book Finder</title>
   </head>
   <body>
-    
+     <!--modal implementation-->
       <div id="modelConfirm"  class="absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin">
         <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
             <div class="p-6 pt-0 text-center">
@@ -33,7 +33,7 @@
             </div>
         </div>
       </div>
-    
+    <!--design of the background-->
     <div class="relative isolate px-6 pt-14 lg:px-8">
       <div
         class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -64,8 +64,14 @@
         ></div>
         
       </div>
+
   
       <div class="text-center p-12" id="indexPage">
+        
+        <button  id="favoritesButton" class="flex -mt-20 bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">
+          Favorites
+        </button>
+      
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
           Welcome to Book Finder!
         </h1>

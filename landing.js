@@ -11,14 +11,24 @@ const dropDownMenu = document.getElementById("dropdown");
 const quoteCategories = document.querySelectorAll("a");
 const quoteDiv = document.getElementById("quote");
 const indexPage = document.getElementById('indexPage');
-const originalIndex = document.getElementById('indexPage').innerHTML;
 const submitKey = document.getElementById('submitKey');
+
+const hideModal = sessionStorage.getItem('bookApi');
+
+const favoritesButton = document.getElementById('favoritesButton');
+
+favoritesButton.addEventListener('click', function(){
+  window.location.href = 'favorites.html'
+})
 
 setTimeout(function(){
   modalForm.className = 'visible'
-  if(modalForm.className = 'visible'){
+  if(hideModal){
+    modalForm.className= 'hidden'
+  }else if(modalForm.className === 'visible'){
     modalForm.className ='absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
   }
+
 
 }, 100)
 
@@ -26,13 +36,18 @@ submitKey.addEventListener('click', function(){
   if(BookApi.value === '' && quoteApi.value === ''){
     alert("Please Enter the Api Keys to proceed!")
     modalForm.className = 'absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
+
+
   }else {
-  
+  sessionStorage.setItem('bookApi', BookApi.value)
   modalForm.className='hidden'
   }
+
+  
   
 
 })
+
 
 
 
