@@ -4,31 +4,41 @@ const favoritesDiv = document.getElementById('favorites')
 const backButton = document.getElementById('backButton');
 
 for (const book of favoriteBooksArray) {
-    
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'bg-red-500 text-white font-bold rounded px-4 py-2'
+
+    const deleteDiv = document.createElement('div');
+    deleteDiv.className = 'w-1/2 p-4 mx-auto text-center';
+    deleteDiv.appendChild(deleteButton);
+
 
     //creates a list for the books
     const bookList = document.createElement("ul");
 
     //this is the list item for each book
     const bookItem = document.createElement("li");
+    bookItem.className = " mt-5 border-4 rounded border-indigo-500 p-16"
 
     //creates another div inside the results div
     const bookDiv = document.createElement("div");
-    bookDiv.className = "border-4 rounded mt-4 border-indigo-500 inline-block "
+    
+    
+   
     
     //this is the title of the book
     const title = document.createElement("h2");
-    title.className= "text-2xl font-bold tracking-tight text-gray-900 m-2"
+    title.className= "text-2xl font-bold tracking-tight text-gray-900 m-2 mb-4"
     title.textContent = book.title;
 
     //creates an element for the author then sets the text to the authors name
     const author = document.createElement("h3");
-    author.className = "text-2xl italic tracking-tight text-gray-600 m-2"
+    author.className = "text-2xl italic tracking-tight text-gray-600 m-2 mb-4"
     author.textContent = book.author;
 
     //creates a p tag for the description and sets the text content from the data in the storage
     const description = document.createElement("p");
-    description.className = 'h-40 overflow-scroll scroll-smooth border-4 rounded border-indigo-300 m-2'
+    description.className = 'h-40 overflow-scroll scroll-smooth border-4 rounded border-indigo-300 mb-4 m-2'
     description.textContent = book.description;
 
     // this div was create to store the info about the book and move them inside the other div
@@ -87,6 +97,7 @@ for (const book of favoriteBooksArray) {
     bookDiv.appendChild(bookElementsDiv)
     //append buttonDiv to the main div
     //append the div to the list item
+    bookDiv.appendChild(deleteDiv);
     bookItem.appendChild(bookDiv);
     //appends the list item to the bookList
     bookList.appendChild(bookItem);
@@ -97,12 +108,20 @@ for (const book of favoriteBooksArray) {
     
 
 
-    
+    deleteButton.addEventListener('click', function(){
+        const deleteBook = favoriteBooksArray.indexOf(book);
+        favoriteBooksArray.splice(deleteBook, 1);
+        localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooksArray));
+        window.location.reload();
+        
+        
+    })
     
     
 }
 
 backButton.addEventListener('click', function(){
     window.location.href = 'index.html'
-    
+
 })
+
