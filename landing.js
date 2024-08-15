@@ -41,6 +41,7 @@ submitKey.addEventListener('click', function(){
 
   }else {
   localStorage.setItem('bookApi', BookApi.value)
+  localStorage.setItem('quoteApi', quoteApi.value)
   modalForm.className='hidden'
   }
 
