@@ -1,21 +1,22 @@
 //code for the index page to show results
 const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
+//selects elements by id 
 const searchInput = document.getElementById("searchInput");
-
-const savedBooks = localStorage.getItem("savedBooks");
-
-const savedBooksArray = JSON.parse(savedBooks) || [];
-
 const resultsDiv = document.getElementById("results");
-
 const clearButton = document.getElementById("clear");
-
 const favoriteButton = document.getElementById('save')
-
 const favoritePage = document.getElementById('favorites')
 
+//gets the search results that are saved into the localStorage
+const savedBooks = localStorage.getItem("savedBooks");
+
+//parses the search results or creates an empty array if the results dont exist
+const savedBooksArray = JSON.parse(savedBooks) || [];
+
+// gets only the book api value from the local storage that is saved when the user submits it
 const bookApiValue = localStorage.getItem('bookApi')
 
+//sets a string for later use on the url 
 const bookApi = 'api';
 
 
@@ -25,6 +26,7 @@ document.addEventListener("submit", function (event) {
     //gets api information about the book searched
     //can add dropdown menu to search the parameter after the q= to search by author, title, etc
     event.preventDefault();
+    //uses bookApi value that is from the localStorage to set the value of the string by doing so we put the api into the url
     fetch(`${bookSearch}${searchInput.value}&key=${bookApi.value = bookApiValue}`)
       .then((response) => response.json())
       .then((data) => {
@@ -53,7 +55,6 @@ document.addEventListener("submit", function (event) {
         console.log(savedBooksArray);
         // saves the books array to the local storage
         localStorage.setItem("savedBooks", JSON.stringify(savedBooksArray));
-        window.location.href = "results.html";
       });
 
   });
@@ -162,22 +163,25 @@ for (const book of savedBooksArray) {
 
     
     
-
+//adds an event listener for the save button to save books into another array
     saveButton.addEventListener('click', function(event){
+        //gets the favorite books from the localStorage
         const favoriteBooks = localStorage.getItem('favoriteBooks');
+        //parses or sets an empty array
         const favoriteBooksArray = JSON.parse(favoriteBooks) || [];
         event.preventDefault();
         
+        //gets the book that matches the text content of the element with the title of the book object from the array
         const savedBook = savedBooksArray.find(book => book.title ===title.textContent)
+        //checks for duplicates in the favoriteBooks array
         const duplicates = favoriteBooksArray.find(book => book.title.trim().toLowerCase() === title.textContent.trim().toLowerCase())
         
-
+        //if not duplicates they will be added to the favorite books array
         if(!duplicates){
             favoriteBooksArray.push(savedBook)
         }
         
-
-        console.log(favoriteBooksArray)
+        //sets the favorite books array into the localStorage
         localStorage.setItem('favoriteBooks',JSON.stringify(favoriteBooksArray))
 
     })
@@ -191,6 +195,7 @@ for (const book of savedBooksArray) {
 if(savedBooksArray){
     localStorage.removeItem('savedBooks');
 }
+
 //added an eventlistener to clear the localstorage and by doing so clearing the page
 
 clearButton.addEventListener('click', function(event){

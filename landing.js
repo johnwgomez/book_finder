@@ -1,10 +1,8 @@
 //code for the landing page and quote picker
-
+//select elements to be used on the script
 const modalForm = document.getElementById('modelConfirm');
 const BookApi = document.getElementById('bookApi')
 const quoteApi = document.getElementById('quoteApi')
-const quoteGenerator = "https://api.api-ninjas.com/v1/quotes?category=";
-const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
 const searchInput = document.getElementById("searchInput");
 const dropDownMenuButton = document.getElementById("dropdownDefaultButton");
 const dropDownMenu = document.getElementById("dropdown");
@@ -12,20 +10,32 @@ const quoteCategories = document.querySelectorAll("a");
 const quoteDiv = document.getElementById("quote");
 const indexPage = document.getElementById('indexPage');
 const submitKey = document.getElementById('submitKey');
-
-const hideModal = localStorage.getItem('bookApi');
-
 const favoritesButton = document.getElementById('favoritesButton');
 
+//urls to be populated with user searches and api keys
+const quoteGenerator = "https://api.api-ninjas.com/v1/quotes?category=";
+const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
+
+//const savedQuoteApi = localStorage.getItem('quoteApi');
+
+// gets book api from storage and saves it into the hideModal const
+const hideModal = localStorage.getItem('bookApi');
+
+
+
+// adds an event listener to the favorites button to take to the favorites page
 favoritesButton.addEventListener('click', function(){
   window.location.href = "favorites.html"
 })
 
-
+// on page load the modal pops up by using a timeout function
 setTimeout(function(){
+  //sets the classname of the modal to visible
   modalForm.className = 'visible'
+  //checks if the hideModal const is equal to true and if it is hides the modal
   if(hideModal){
     modalForm.className= 'hidden'
+    // if the first statement is not true displays the modal and gives styling to it
   }else if(modalForm.className === 'visible'){
     modalForm.className ='absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
   }
@@ -33,12 +43,14 @@ setTimeout(function(){
 
 }, 100)
 
+//adds event listener for the submit key
 submitKey.addEventListener('click', function(){
+  //checks if the values of the api field are null or undefined if so renders the modal again
   if(!BookApi.value && !quoteApi.value){
     alert("Please Enter the Api Keys to proceed!")
     modalForm.className = 'absolute visible z-50 inset-0 bg-gray-900 overflow-y-auto h-full w-full px-4 fixed pin'
 
-
+ //hides the modal and sets the values of input fields to local storage
   }else {
   localStorage.setItem('bookApi', BookApi.value)
   localStorage.setItem('quoteApi', quoteApi.value)
@@ -54,18 +66,19 @@ submitKey.addEventListener('click', function(){
 
 
 
+
+//adds event listener for whenver the users submits a search term
 document.addEventListener("submit", function (event) {
   //gets api information about the book searched
-  //can add dropdown menu to search the parameter after the q= to search by author, title, etc
   event.preventDefault();
   fetch(`${bookSearch}${searchInput.value}&key=${BookApi.value}`)
     .then((response) => response.json())
     .then((data) => {
-        //getting saved books from local storage
+      //getting saved books from local storage
       const savedBooks = localStorage.getItem("savedBooks");
       //parsing to make an array
       const savedBooksArray = JSON.parse(savedBooks) || [];
-
+      //a for loop to set the object with every parameter from the api
       for (const item of data.items) {
         const book = {};
         book.title = item.volumeInfo.title;
@@ -86,13 +99,15 @@ document.addEventListener("submit", function (event) {
       console.log(savedBooksArray);
       // saves the books array to the local storage
       localStorage.setItem("savedBooks", JSON.stringify(savedBooksArray));
+      // redirects to the results page
       window.location.href = "results.html";
     });
 });
 
 
-
+//when the button is clicked a dropdown menu is shown to choose the category of quotes
 dropDownMenuButton.addEventListener("click", function () {
+  //conditional check for when to display the menu
   if (dropDownMenu.className === "visible") {
     dropDownMenu.className = "hidden";
   } else {
@@ -100,6 +115,8 @@ dropDownMenuButton.addEventListener("click", function () {
   }
 });
 
+
+//based on whats clicked to the menu adds a category to the url and then addss the value of the api 
 quoteCategories.forEach((category) => {
   category.addEventListener("click", function () {
     category = category.innerHTML.toLowerCase();
@@ -107,11 +124,12 @@ quoteCategories.forEach((category) => {
     fetch(fullURL, {
       method: "GET",
       headers: {
-        "X-Api-Key": quoteApi.value,
+        "X-Api-Key": quoteApi.value, //give it the value of the string saved in the local storage
         "Content-Type": "application/json",
       },
     })
       .then((response) => response.json())
+      //based on the data it creates an element that will render the quote on the page
       .then((data) => {
         console.log(data);
         const quoteEl = document.createElement("h3");
@@ -126,7 +144,7 @@ quoteCategories.forEach((category) => {
       });
 
       
-
+//hides the menu when everything is done
     dropDownMenu.className = "hidden";
   });
 });
