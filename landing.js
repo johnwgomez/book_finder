@@ -21,6 +21,10 @@ const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
 // gets book api from storage and saves it into the hideModal const
 const hideModal = localStorage.getItem('bookApi');
 
+//These are used for the search field modal
+const searchModal = document.getElementById("searchModal")
+const closeButton = document.getElementById("close-modal-btn")
+
 
 
 // adds an event listener to the favorites button to take to the favorites page
@@ -71,6 +75,18 @@ submitKey.addEventListener('click', function(){
 document.addEventListener("submit", function (event) {
   //gets api information about the book searched
   event.preventDefault();
+
+  // Modal will warn users if they enter a blank search  
+if (searchInput.value === ''){
+  event.preventDefault();
+  searchModal.className = "visible";
+}
+
+closeButton.addEventListener('click', function(){
+
+  searchModal.className = "hidden";
+})
+
   fetch(`${bookSearch}${searchInput.value}&key=${BookApi.value}`)
     .then((response) => response.json())
     .then((data) => {
