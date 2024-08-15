@@ -19,6 +19,10 @@ const bookApiValue = localStorage.getItem('bookApi')
 //sets a string for later use on the url 
 const bookApi = 'api';
 
+//These are used for the search field modal
+const searchModal = document.getElementById("searchModal")
+const closeButton = document.getElementById("close-modal-btn")
+
 
 
 
@@ -26,6 +30,18 @@ document.addEventListener("submit", function (event) {
     //gets api information about the book searched
     //can add dropdown menu to search the parameter after the q= to search by author, title, etc
     event.preventDefault();
+
+    // Modal will warn users if they enter a blank search  
+if (searchInput.value === ''){
+    event.preventDefault();
+    searchModal.className = "visible";
+  }
+  
+  closeButton.addEventListener('click', function(){
+  
+    searchModal.className = "hidden";
+  })
+
     //uses bookApi value that is from the localStorage to set the value of the string by doing so we put the api into the url
     fetch(`${bookSearch}${searchInput.value}&key=${bookApi.value = bookApiValue}`)
       .then((response) => response.json())
