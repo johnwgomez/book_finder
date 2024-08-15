@@ -22,9 +22,9 @@ for (const book of favoriteBooksArray) {
 
     //creates another div inside the results div
     const bookDiv = document.createElement("div");
-    
-    
-   
+
+   bookItem.className = "border-4 rounded mt-4 border-indigo-500 inline-block p-16"
+
     
     //this is the title of the book
     const title = document.createElement("h2");
