@@ -1,5 +1,7 @@
+//gets the books from the local storage and then parses them or sets an empty array if they dont exist
 const favoriteBooks = localStorage.getItem("favoriteBooks")
 const favoriteBooksArray = JSON.parse(favoriteBooks) || [];
+//selects elements
 const favoritesDiv = document.getElementById('favorites')
 const backButton = document.getElementById('backButton');
 
@@ -107,11 +109,14 @@ for (const book of favoriteBooksArray) {
 
     
 
-
+    //gets the index of the book we want to delete
     deleteButton.addEventListener('click', function(){
         const deleteBook = favoriteBooksArray.indexOf(book);
+        //removes the boook from the array
         favoriteBooksArray.splice(deleteBook, 1);
+        //sets the new array without the deleted book on the local storage
         localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooksArray));
+        //refreshes page to render the other books that are saved and removes the deleted book element
         window.location.reload();
         
         
@@ -120,6 +125,7 @@ for (const book of favoriteBooksArray) {
     
 }
 
+//redirects back to the index html
 backButton.addEventListener('click', function(){
     window.location.href = 'index.html'
 
