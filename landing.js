@@ -16,7 +16,8 @@ const favoritesButton = document.getElementById('favoritesButton');
 const quoteGenerator = "https://api.api-ninjas.com/v1/quotes?category=";
 const bookSearch = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
 
-//const savedQuoteApi = localStorage.getItem('quoteApi');
+const savedQuoteApi = localStorage.getItem('quoteApi');
+
 
 // gets book api from storage and saves it into the hideModal const
 const hideModal = localStorage.getItem('bookApi');
@@ -124,7 +125,7 @@ quoteCategories.forEach((category) => {
     fetch(fullURL, {
       method: "GET",
       headers: {
-        "X-Api-Key": quoteApi.value, //give it the value of the string saved in the local storage
+        "X-Api-Key": quoteApi.value = savedQuoteApi, //give it the value of the string saved in the local storage
         "Content-Type": "application/json",
       },
     })
