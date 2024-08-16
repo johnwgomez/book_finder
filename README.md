@@ -1,48 +1,66 @@
-# Book Finder and Quote Generator Web App
-[Book Finder Website](https://johnwgomez.github.io/book_finder/)
-## Team #
-**Members:** Gustavo, Steven, John, Antonio
+# Book Finder and Quote Generator
 
-## Project Title:
-**Book Finder and Quote Generator Web App**
+## Overview
 
-## Project Description:
-This project involves creating a simple web application that allows users to search for books and generate random quotes. The application will integrate with two server-side APIs: one for book search and the other for quote generation. The user interface will be styled using the Bulma CSS framework to ensure a clean and responsive design.
+**Book Finder and Quote Generator** is a web application that allows users to search for books and generate random quotes. By integrating with the Google Books API and the Quote Generator API, this application offers an intuitive and user-friendly experience for both book enthusiasts and those looking for daily inspiration.
 
-## User Story:
-- **As a book enthusiast,**
-  - I want to search for books by title, author, or genre,
-  - So that I can easily discover new books to read.
-- **As a user looking for inspiration,**
-  - I want to generate random quotes,
-  - So that I can find motivation or share them with others.
+Explore the app live at: [Book Finder and Quote Generator](https://johnwgomez.github.io/book_finder/)
 
-## Mockup:
-The design will include a search bar for books, a results section displaying book information, and a separate section for generating and displaying random quotes. The layout will be simple and intuitive, making use of Bulma’s grid system and components.
+## Table of Contents
 
-## Application Requirements:
-- Uses at least 2 server-side APIs:
-  1. Book Search API (e.g., Google Books API)
-  2. Quote Generator API (e.g., Quotes API)
-- CSS framework: Bulma
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
 
-## Rough Breakdown of Tasks:
-1. **API Integration:**
-   - Research and select appropriate APIs for book search and quote generation.
-   - Set up API requests to fetch data for book search and quote generation.
-2. **Frontend Development:**
-   - Design the layout using tailwind, ensuring a responsive and clean interface.
-   - Implement the search functionality, displaying results dynamically.
-   - Implement the quote generation feature, displaying a new quote on request.
-3. **Backend Development:**
-   - Set up server-side logic to handle API requests and responses.
-   - Integrate APIs with the frontend for seamless data flow.
-4. **Testing:**
-   - Test the app for functionality, ensuring that book searches and quote generation work as expected.
-   - Ensure that the app is responsive and visually appealing across different devices.
-5. **Deployment:**
-   - Prepare the app for deployment, ensuring all dependencies are correctly configured.
-   - Deploy the app to a hosting service (e.g., GitHub Pages, Heroku).
-6. **Documentation:**
-   - Write documentation for setting up and using the app, including API keys configuration if needed.
-   - Document any challenges encountered during development and how they were resolved.
+## Features
+
+- **Book Search**: Easily search for books by title, author, or genre, and view detailed information including title, author, description, cover image, preview link, and more.
+- **Quote Generator**: Generate random quotes from a variety of categories to find daily inspiration.
+- **Favorites Management**: Save your favorite books and access them anytime from a dedicated favorites page.
+- **Responsive Design**: Enjoy a seamless experience on any device, with a responsive layout and design.
+
+## Technologies Used
+
+- **Frontend**:
+  - HTML
+  - Tailwind CSS
+- **Backend**:
+  - JavaScript
+- **APIs**:
+  - Google Books API
+  - Quote Generator API
+
+## Setup Instructions
+Prerequisites
+
+	•	Web Browser: Any modern web browser (Chrome, Firefox, Safari, etc.)
+	•	Google Books API Key: Obtain from Google Cloud Console
+	•	Quote Generator API Key: Obtain from API Ninjas
+
+Running the Project Locally
+
+Clone the Repository:git clone https://github.com/johnwgomez/book_finder.git
+
+	2.	Open index.html:
+	•	Open the index.html file in your web browser.
+	•	A modal will prompt you to enter the Google Books API Key and Quote Generator API Key.
+   **Google Books API Key:** AIzaSyAF346xBtlIrylYJvEP8dIP_L4581GQkOY
+   **Quotes API Key:** ZdLWT6DldrWkI5DPZO9Dbw==XN3uwMFhiiv2ZNHy
+	3.	Explore the Features:
+	•	Use the search bar to find books by title, author, or genre.
+	•	Generate random quotes by selecting a category from the dropdown menu.
+	•	Save your favorite books and view them on the “Favorite Books” page.
+
+
+## Project Structure
+
+```plaintext
+book_finder/
+├── index.html            # Main landing page
+├── results.html          # Page to display search results
+├── favorites.html        # Page to display user's favorite books
+├── landing.js            # JavaScript for handling the landing page functionality
+├── logic.js              # JavaScript for handling search results and book saving
+├── favorites.js          # JavaScript for handling the favorite books page
+└── README.md             # Project documentation (this file)
