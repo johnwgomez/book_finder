@@ -188,6 +188,7 @@ for (const book of savedBooksArray) {
         event.preventDefault();
         
         //gets the book that matches the text content of the element with the title of the book object from the array
+        //Mia the Sub TA helped us for this line of code 
         const savedBook = savedBooksArray.find(book => book.title ===title.textContent)
         //checks for duplicates in the favoriteBooks array
         const duplicates = favoriteBooksArray.find(book => book.title.trim().toLowerCase() === title.textContent.trim().toLowerCase())
